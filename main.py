@@ -32,7 +32,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             print('MOUSEBUTTONDOWN')
             print(mouse_pos)
@@ -41,11 +40,18 @@ while running:
             
         if event.type == pygame.MOUSEBUTTONUP:
             print('MOUSEBUTTONUP')
+            for circle in whites + blacks:
+                if circle.is_dragging == True:
+                    circle.is_dragging = False
+            # g = grid_manager.get_grid_by_pos(circle.pos)
+                    
 
     grid_manager.draw_table()
     for circle in whites + blacks:
+        print(circle.grid, g)
         if circle.grid == g:
             circle.is_dragging = True
+            print('self.is_dragging = True')
         circle.draw(mouse_pos)
 
     # Flip the display

@@ -26,7 +26,7 @@ class Member:
 
 	def draw(self, pos):
 		if self.is_dragging:
-			self.pos = pos
+			self.pos = (pos[0] - 40, pos[1] - 40)
 
 		if not self.x:
 			if self.is_white:
@@ -38,7 +38,4 @@ class Member:
 				circle = white_circle_x
 			elif self.is_white == False:
 				circle = black_circle_x
-		self.screen.blit(circle, self.pos)
-
-	def drag(self):
-		...																																																																																																
+		self.screen.blit(circle, self.pos)																																																																																														
