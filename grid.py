@@ -16,7 +16,6 @@ class Grid:
         self.width = width
         self.height = height
         self.center = Point(start_point.x + width / 2, start_point.y + height / 2)
-        self.is_empty = True 
         self.name = name
         self.screen = screen
         self.rect = pygame.Rect(start_point.x, start_point.y, self.width, self.height)
@@ -24,6 +23,8 @@ class Grid:
         pass
     def draw(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
+    def is_in_this_grid(self, pos):
+        return pos[0] > self.start_point.x and pos[1] > self.start_point.y and pos[0] <= self.end_point.x and pos[1] <= self.end_point.y
 
         
 
@@ -49,6 +50,15 @@ class GridManager:
             if grid.name == name:
                 return grid
         assert False
+
+    def get_grid_by_pos(self, pos):
+        for grid in self.all_grids:
+            if grid.is_in_this_grid(pos):
+                return grid
+        assert False
+
+
+        
 
     def draw_table(self):
         for grid in self.all_grids:
