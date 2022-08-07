@@ -43,6 +43,7 @@ class GridManager:
                     color = WHITE
                 grid = Grid(start_point, width, height, name, self.screen, color)
                 grid_list.append(grid)
+                
         self.all_grids = grid_list
 
     def get_grid(self, name):
@@ -64,7 +65,6 @@ class GridManager:
         for grid in self.all_grids:
             grid.draw()
 
-        
-        
+
                 
 
